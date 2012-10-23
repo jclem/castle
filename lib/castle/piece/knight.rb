@@ -1,4 +1,4 @@
-class Castle::Piece::Knight
+class Castle::Piece::Knight < Castle::Piece
   def name
     'knight'
   end

@@ -1,7 +1,8 @@
 class Castle::Piece
   attr_reader :color, :square
+  attr_writer :position
 
-  def initialize(color, square)
+  def initialize(color, square, position = nil)
     @color = color
     @square = square
   end
@@ -25,32 +26,22 @@ class Castle::Piece
     end
   end
 
-  def self.from_fen(fen, square)
+  def self.from_fen(fen, square, position = nil)
+    color = fen.upcase == fen ? :white : :black
+
     case fen
-    when 'r'
-      Castle::Piece::Rook.new(:black, square)
-    when 'n'
-      Castle::Piece::Knight.new(:black, square)
-    when 'b'
-      Castle::Piece::Bishop.new(:black, square)
-    when 'q'
-      Castle::Piece::Queen.new(:black, square)
-    when 'k'
-      Castle::Piece::King.new(:black, square)
-    when 'p'
-      Castle::Piece::Pawn.new(:black, square)
-    when 'R'
-      Castle::Piece::Rook.new(:white, square)
-    when 'N'
-      Castle::Piece::Knight.new(:white, square)
-    when 'B'
-      Castle::Piece::Bishop.new(:white, square)
-    when 'Q'
-      Castle::Piece::Queen.new(:white, square)
-    when 'K'
-      Castle::Piece::King.new(:white, square)
-    when 'P'
-      Castle::Piece::Pawn.new(:white, square)
+    when 'r', 'R'
+      Castle::Piece::Rook.new(color, square)
+    when 'n', 'N'
+      Castle::Piece::Knight.new(color, square)
+    when 'b', 'B'
+      Castle::Piece::Bishop.new(color, square)
+    when 'q', 'Q'
+      Castle::Piece::Queen.new(color, square)
+    when 'k', 'K'
+      Castle::Piece::King.new(color, square)
+    when 'p', 'P'
+      Castle::Piece::Pawn.new(color, square)
     end
   end
 end

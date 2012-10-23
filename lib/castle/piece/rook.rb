@@ -1,4 +1,4 @@
-class Castle::Piece::Rook
+class Castle::Piece::Rook < Castle::Piece
   def name
     'rook'
   end
