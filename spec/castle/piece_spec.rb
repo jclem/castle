@@ -10,6 +10,16 @@ describe Castle::Piece do
     end
   end
 
+  describe "#square" do
+    context "when asked in algebraic for" do
+      let(:piece) { Castle::Piece.new(:white, [6, 5]) }
+
+      it "returns the algebraic name of the square" do
+        piece.square(:algebraic).should eq :g6
+      end
+    end
+  end
+
   describe ".from_fen" do
     context "P" do
       let(:piece) { Castle::Piece.from_fen('P', [0, 1]) }

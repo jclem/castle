@@ -14,6 +14,17 @@ class Castle::Piece
     @has_moved
   end
 
+  def square(format = nil)
+    case format
+    when :algebraic
+      file = %w[a b c d e f g h][square[0]]
+      rank = square[1] + 1
+      "#{file}#{rank}".to_sym
+    else
+      @square
+    end
+  end
+
   def self.from_fen(fen, square)
     case fen
     when 'P'
